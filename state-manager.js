@@ -15,7 +15,6 @@ function renderFront() {
 function startQuiz() {
     console.log(`${'startQuiz'} ran`);
     // if user hits start, begin quiz and render question.
-    
     // need first to remove front page material like start button.
     renderQuestion();
 }
@@ -23,10 +22,7 @@ function startQuiz() {
 function generateQuestion() {
     console.log(`${'generateQuestion'} ran`);
     const questionIndex = STORE.progress.questionNum;
-    // Increment QuestionNum for the next round.
-    STORE.progress.questionNum ++;
     const answerOrder = getRandomAnswerOrder();
-    // fetch question / answer data
     const question = STORE.QA[questionIndex].question;
     const answer1 = STORE.QA[questionIndex].answers[answerOrder[0]];
     const answer2 = STORE.QA[questionIndex].answers[answerOrder[1]];
@@ -53,7 +49,7 @@ function generateQuestion() {
                     </label>
                 </fieldset>
                 <div id="button-holder">
-                    <button type="submit" id="submit">Submit</button>
+                    <button type="submit" id="submit-button">Submit</button>
                 </div>
             </form>`
 }
@@ -62,8 +58,8 @@ function getRandomAnswerOrder() {
     //  Let's do the Fisher-Yates shuffle! 
     const randomAnswerOrder = [0,1,2,3];
     for (let i = randomAnswerOrder.length - 1; i > 0; i--) {
-        let n = Math.floor(Math.random() * (i + 1)); // generate a random index from 0 to i
-        [randomAnswerOrder[i], randomAnswerOrder[n]] = [randomAnswerOrder[n], randomAnswerOrder[i]]; // swap 
+        let n = Math.floor(Math.random() * (i + 1)); 
+        [randomAnswerOrder[i], randomAnswerOrder[n]] = [randomAnswerOrder[n], randomAnswerOrder[i]]; 
     }
     console.log(`${'getRandomAnswerOrder'} ran`);
     return randomAnswerOrder;
@@ -76,13 +72,11 @@ function renderQuestion() {
 }
 
 function awaitAndValidateResponse(){
-    // listen for submit
-    // on submit, validate answer. 
-    // if correct, 
-        // call correct screen renderer
-    // if incorrect, 
-        // call incorrect screen renderer
     console.log(`${'awaitAndValidateResponse'} ran`);
+    $('#button-holder').on('click', '#submit-button', function (event) {
+        const answerChoice = $('input[name="answer"]:checked').val();
+        answerChoice === STORE.QA[STORE.progress.questionNum].correct ? renderResponseCorrect(): renderResponseIncorrect();     
+    });
 }
 
 function renderResponseCorrect() {
@@ -98,7 +92,7 @@ function renderResponseIncorrect() {
 function renderNextQuestion() {
 
     // Issue: how to handle penultimate question? 
-
+    //STORE.progress.questionNum ++;
     // listen for next button click
     // Unless penultimate, 
         // renderQuestion()
