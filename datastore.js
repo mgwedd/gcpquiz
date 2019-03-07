@@ -16,7 +16,6 @@ const STORE = {
                             'A service that Google offers to enterprises for developing, launching, and deploying their own managed web applications', 
                             'The world’s number one cloud computing platform'],
             right: 'A suite of enterprise cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products'
-    
         }, 
         {
             question: 'What Is GCP’s Compute Engine Useful for?',
@@ -24,7 +23,6 @@ const STORE = {
                     'Ingesting and processing streaming data from Internet of Things devices', 
                     'Managing noSQL datastores'],
             right: 'Launching, provisioning and decommissioning virtual machines (VMs) on demand'
-    
         }
     ]
 }

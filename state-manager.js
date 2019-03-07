@@ -54,7 +54,6 @@ function renderEnd() {
  // must be able to call restart the quiz and clear state.
 }
 
-
 function createQuiz() {
     renderFront();
 }
