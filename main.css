@@ -1,0 +1,30 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+  }
+
+body { 
+    min-height: 100vh;   
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+}
+  
+h2 {
+    text-align: center;
+}
+
+fieldset {
+    width: 25em;
+    margin: 20px;
+    border: 0 none;
+}
+
+label {
+    display: flex;
+}
+
+#button-holder {
+    text-align: center;
+}

@@ -52,7 +52,9 @@ function generateQuestion() {
                         <span>${answer4}</span>
                     </label>
                 </fieldset>
-                <button type="submit" id="submit">Submit</button>
+                <div id="button-holder">
+                    <button type="submit" id="submit">Submit</button>
+                </div>
             </form>`
 }
 
