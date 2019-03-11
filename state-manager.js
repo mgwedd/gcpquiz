@@ -4,18 +4,13 @@ function renderFront() {
     // In case this is a quiz restart, reset the question number and score.
     STORE.progress.score = 0;
     STORE.progress.questionNum = 0;
+    $('#inject-question').html(
+    `<h2>Welcome to the Google Cloud Platform Quiz!</h2>
+    <button type="button" id="start">Start</button>`);
 
-    // $('main').on('click', '#start', function (event) {
-         //startQuiz();
-    // )};
-    startQuiz();
-}
-
-function startQuiz() {
-    console.log(`${'startQuiz'} ran`);
-    // if user hits start, begin quiz and render question.
-    // need first to remove front page material like start button.
-    renderQuestionAndProgress();
+    $('#start').on('click', function (event) {
+        renderQuestionAndProgress();
+    });
 }
 
 function generateQuestion() {
@@ -84,7 +79,7 @@ function awaitAndValidateResponse(){
     $('form').on('submit', function (event) {
         event.preventDefault();
         const answerChoice = $('input[name="answer"]:checked').val();
-        if (answerChoice === STORE.QA[STORE.progress.questionNum].correct) {
+        if (answerChoice == STORE.QA[STORE.progress.questionNum].correct) {
             renderResponseCorrect();
         } else {
             renderResponseIncorrect();
@@ -97,13 +92,22 @@ function renderResponseCorrect() {
     console.log(`${'renderResponseCorrect'} ran`);
     STORE.progress.score++;
     renderProgress();
-    // some prompt box.
+    $('#inject-question').html(`<h2>You got it!</h2><button type="button" id="next">Next</button>`);
+    $('#next').on('click', function (event) {
+        renderNextQuestion();
+    });
 }
 
 function renderResponseIncorrect() {
     // render correct answer screen with data from validate.
     console.log(`${'renderResponseIncorrect'} ran`);
-    // some prompt box
+    $('#inject-question').html(
+        `<h2>Aww, not quite. The correct answer was: 
+        ${STORE.QA[STORE.progress.questionNum].answers[STORE.QA[STORE.progress.questionNum].correct]}</h2>
+        <button type="button" id="next">Next</button>`);
+    $('#next').on('click', function (event) {
+        renderNextQuestion();
+    });
 }
 
 function renderNextQuestion() {
@@ -118,6 +122,7 @@ function renderEnd() {
  // if state tracker was index of Store is length -1, then render the end screen.
  // must be able to call restart the quiz and clear state.
  console.log(`${'renderEnd'} ran`);
+
 
 }
 
