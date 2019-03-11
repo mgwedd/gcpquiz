@@ -1,7 +1,6 @@
 function renderFront() {
     console.log(`${'renderFront'} ran`);
     // renders home screen and allows user to start the quiz
-
     // In case this is a quiz restart, reset the question number and score.
     STORE.progress.score = 0;
     STORE.progress.questionNum = 0;
@@ -16,7 +15,7 @@ function startQuiz() {
     console.log(`${'startQuiz'} ran`);
     // if user hits start, begin quiz and render question.
     // need first to remove front page material like start button.
-    renderQuestion();
+    renderQuestionAndProgress();
 }
 
 function generateQuestion() {
@@ -32,19 +31,19 @@ function generateQuestion() {
             <form>
                 <fieldset>
                     <label class="answer">
-                        <input type="radio" value="${answer1}" name="answer" required>
+                        <input type="radio" value="${answerOrder[0]}" name="answer" required>
                         <span>${answer1}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answer2}" name="answer" required>
+                        <input type="radio" value="${answerOrder[1]}" name="answer" required>
                         <span>${answer2}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answer3}" name="answer" required>
+                        <input type="radio" value="${answerOrder[2]}" name="answer" required>
                         <span>${answer3}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answer4}" name="answer" required>
+                        <input type="radio" value="${answerOrder[3]}" name="answer" required>
                         <span>${answer4}</span>
                     </label>
                 </fieldset>
@@ -56,47 +55,63 @@ function generateQuestion() {
 
 function getRandomAnswerOrder() {
     //  Let's do the Fisher-Yates shuffle! 
+    console.log(`${'getRandomAnswerOrder'} ran`);
     const randomAnswerOrder = [0,1,2,3];
     for (let i = randomAnswerOrder.length - 1; i > 0; i--) {
         let n = Math.floor(Math.random() * (i + 1)); 
         [randomAnswerOrder[i], randomAnswerOrder[n]] = [randomAnswerOrder[n], randomAnswerOrder[i]]; 
     }
-    console.log(`${'getRandomAnswerOrder'} ran`);
     return randomAnswerOrder;
 }
 
-function renderQuestion() {
+function renderQuestionAndProgress() {
+    console.log(`${'renderQuestionAndProgress'} ran`);
     $('#inject-question').html(generateQuestion());
-    console.log(`${'renderQuestion'} ran`);
+    STORE.progress.questionNum++;
+    renderProgress();
     awaitAndValidateResponse();
+}
+
+function renderProgress() {
+    $('#inject-progress').html(
+        `<h3 id='progress'>${STORE.progress.questionNum}/10</h3>
+         <h3 id='score'>${STORE.progress.score}/10</h3>`
+    );
 }
 
 function awaitAndValidateResponse(){
     console.log(`${'awaitAndValidateResponse'} ran`);
-    $('#button-holder').on('click', '#submit-button', function (event) {
+    $('form').on('submit', function (event) {
+        event.preventDefault();
         const answerChoice = $('input[name="answer"]:checked').val();
-        answerChoice === STORE.QA[STORE.progress.questionNum].correct ? renderResponseCorrect(): renderResponseIncorrect();     
+        if (answerChoice === STORE.QA[STORE.progress.questionNum].correct) {
+            renderResponseCorrect();
+        } else {
+            renderResponseIncorrect();
+        }
     });
 }
 
 function renderResponseCorrect() {
     // render correct answer screen with data from validate.
     console.log(`${'renderResponseCorrect'} ran`);
+    STORE.progress.score++;
+    renderProgress();
+    // some prompt box.
 }
 
 function renderResponseIncorrect() {
     // render correct answer screen with data from validate.
     console.log(`${'renderResponseIncorrect'} ran`);
+    // some prompt box
 }
 
 function renderNextQuestion() {
-
-    // Issue: how to handle penultimate question? 
-    //STORE.progress.questionNum ++;
-    // listen for next button click
-    // Unless penultimate, 
-        // renderQuestion()
-        // update progress with data from progress object (which validate will have updated) 
+    if (STORE.progress.questionNum < STORE.QA.length) {
+        renderQuestionAndProgress();
+    } else {
+        renderEnd();
+    }
 }
 
 function renderEnd() {
