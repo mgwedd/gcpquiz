@@ -119,16 +119,14 @@ function renderNextQuestion() {
 }
 
 function renderEnd() {
- // if state tracker was index of Store is length -1, then render the end screen.
- // must be able to call restart the quiz and clear state.
- console.log(`${'renderEnd'} ran`);
+    console.log(`${'renderEnd'} ran`);
+    $('#inject-question').html(
+    `<h2>That's it! You're done with the quiz. You got ${STORE.progress.score} out of ${STORE.QA.length} questions right.</h2>
+    <button type="button" id="restart">Try Again</button>`);
 
-
+    $('#restart').on('click', function (event) {
+        renderFront();
+    });
 }
 
-function createQuiz() {
-    renderFront();
-    console.log(`${'createQuiz'} ran`);
-}
-
-$(createQuiz);
+$(renderFront);
