@@ -62,15 +62,14 @@ function getRandomAnswerOrder() {
 function renderQuestionAndProgress() {
     console.log(`${'renderQuestionAndProgress'} ran`);
     $('#inject-question').html(generateQuestion());
-    STORE.progress.questionNum++;
     renderProgress();
     awaitAndValidateResponse();
 }
 
 function renderProgress() {
     $('#inject-progress').html(
-        `<h3 id='progress'>${STORE.progress.questionNum}/10</h3>
-         <h3 id='score'>${STORE.progress.score}/10</h3>`
+        `<h3 id='progress'>Progress: ${STORE.progress.questionNum}/10</h3>
+         <h3 id='score'>Score: ${STORE.progress.score}/10</h3>`
     );
 }
 
@@ -101,9 +100,10 @@ function renderResponseCorrect() {
 function renderResponseIncorrect() {
     // render correct answer screen with data from validate.
     console.log(`${'renderResponseIncorrect'} ran`);
+    const correctAnswerIndex = STORE.QA[STORE.progress.questionNum].correct;
     $('#inject-question').html(
         `<h2>Aww, not quite. The correct answer was: 
-        ${STORE.QA[STORE.progress.questionNum].answers[STORE.QA[STORE.progress.questionNum].correct]}</h2>
+        ${STORE.QA[STORE.progress.questionNum].answers[correctAnswerIndex]}</h2>
         <button type="button" id="next">Next</button>`);
     $('#next').on('click', function (event) {
         renderNextQuestion();
@@ -111,6 +111,7 @@ function renderResponseIncorrect() {
 }
 
 function renderNextQuestion() {
+    STORE.progress.questionNum++;
     if (STORE.progress.questionNum < STORE.QA.length) {
         renderQuestionAndProgress();
     } else {

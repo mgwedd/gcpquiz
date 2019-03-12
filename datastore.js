@@ -33,20 +33,12 @@ const STORE = {
             correct: 3
         }, 
         {
-            question: 'What’s an accurate distinction between Big Query and Big Table?',
-            answers: ['Big Table is a globally distributed key-value store while Big Query is the service for querying that store',
-                      'Big Query is the service underneath Google Search; Big Table is the technology underneath Google Sheets', 
-                      'Big Table focuses on low-latency nonrelational data access while Big Query is best at rapidly scanning massive datasets', 
-                      'Big Query is a managed, cloud-native Hadoop implementation; Big Table is for processing streaming data'],
-            correct: 2
-        },
-        {
-            question: '',
-            answers: ['Big Table is a globally distributed key-value store while Big Query is the service for querying that store',
-                      'Big Query is the service underneath Google Search; Big Table is the technology underneath Google Sheets', 
-                      'Big Table focuses on low-latency nonrelational data access while Big Query is best at rapidly scanning massive datasets', 
-                      'Big Query is a managed, cloud-native Hadoop implementation; Big Table is for processing streaming data'],
-            correct: 2
+            question: 'Which are adjusted on each epoch in a machine learning training session?',
+            answers: ['features and hyperparameters',
+                      'learning rate and number of hidden layers', 
+                      'weights and features', 
+                      'weights and biases'],
+            correct: 3
         },
         {
             question: 'What’s an accurate distinction between Big Query and Big Table?',
