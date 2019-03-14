@@ -28,3 +28,11 @@ label {
 #button-holder {
     text-align: center;
 }
+
+#inject-progress {
+    position: absolute;
+    top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
