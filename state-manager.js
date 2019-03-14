@@ -3,7 +3,7 @@ function renderFront() {
     // renders home screen and allows user to start the quiz
     // In case this is a quiz restart, reset the question number and score.
     STORE.progress.score = 0;
-    STORE.progress.questionNum = 0;
+    STORE.progress.questionNum = 1;
     $('#inject-question').html(
     `<h2>Welcome to the Google Cloud Platform Quiz!</h2>
     <button type="button" id="start">Start</button>`);
@@ -124,7 +124,7 @@ function renderEnd() {
     $('#inject-question').html(
     `<h2>That's it! You're done with the quiz. You got ${STORE.progress.score} out of ${STORE.QA.length} questions right.</h2>
     <button type="button" id="restart">Try Again</button>`);
-
+    $('#inject-progress').html('');
     $('#restart').on('click', function (event) {
         renderFront();
     });

@@ -1,11 +1,11 @@
 // STORE is our database.
 // It's an object literal with two properties: 'progress' and 'questions'. 
 // The value of 'progress' is an object with two key/val pairs: the current question and the score.
-// The value of 'questions' is an array containing objects, which have three props: 'question', 'wrong' with an array of wrong strings, and 'right' with the correct answer string 
+// The value of 'QA' is an array with objects that contain a question str prop, answers array, and another prop with the index of the correct answer
 
 const STORE = {
     progress: {
-        questionNum: 0, 
+        questionNum: 1, 
         score: 0
     },
     QA: [
@@ -79,6 +79,14 @@ const STORE = {
                       'Dataflow.', 
                       'Dataprep.'],
             correct: 2
+        },
+        {
+            question: 'You have a pre-existing Hadoop cluster that you use to run on-prem jobs, and you want to migrate to a managed service with less ops and admin. What should you do?',
+            answers: ['Use a transfer appliance to get the data into BigQuery.',
+                      'Bigtable is the answer. Use Transfer Service to get it in and then deal with it there.', 
+                      'Build a ML model in ML Engine to predict the correct course of action.', 
+                      'This is a good use case for Dataproc.'],
+            correct: 3
         }
     ]
 }
