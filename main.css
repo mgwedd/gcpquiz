@@ -25,14 +25,18 @@ label {
     display: flex;
 }
 
-#button-holder {
+#start, #next, #submit, #restart {
+    display: block;
+    margin: auto;
     text-align: center;
+
 }
 
 #inject-progress {
-    position: absolute;
-    top: 25px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: absolute;
+    top: 25px;
 }
+

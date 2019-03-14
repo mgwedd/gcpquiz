@@ -11,10 +11,10 @@ const STORE = {
     QA: [
         {
             question: 'What is Google Cloud Platform (GCP)?',
-            answers: ['A collection of products that includes Youtube, Gmail and Search, which Google offers to customers on a freemium basis, with the overarching purpose of organizing the world’s information',
-                      'A service that Google offers to enterprises for developing, launching, and deploying their own managed web applications', 
+            answers: ['A collection of products that includes Youtube, Gmail and Search, which Google offers to customers on a freemium basis, with the overarching purpose of organizing the world’s information.',
+                      'A service that Google offers to enterprises for developing, launching, and deploying their own managed web applications.', 
                       'The world’s number one cloud computing platform', 
-                      'A suite of enterprise cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products'],
+                      'A suite of enterprise cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products.'],
             correct: 3
         }, 
         {
