@@ -6,17 +6,19 @@
 
 body { 
     min-height: 100vh;   
-    display: flex;
-    justify-content: center;  
-    align-items: center;
+    background-image: url("cloud-background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
-  
+
 h2 {
     text-align: center;
+    font: bold 30px;
+    color: white;
 }
 
 fieldset {
-    width: 25em;
     margin: 20px;
     border: 0 none;
 }
@@ -25,18 +27,66 @@ label {
     display: flex;
 }
 
-#start, #next, #submit, #restart {
-    display: block;
-    margin: auto;
-    text-align: center;
+.render-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 175px 10px;
+    color: white;
+}
 
+/* styles for all button instances */
+/* .button-holder {
+    
+} */
+.button {
+    background-color: white; 
+    border: 2px solid black;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+.button:hover {
+    background-color: #D2DEFE; 
+}
+/* .answer styles each individual form radio input field */
+.answer {
+    background-color: white;
+    color: black;
+    margin: 10px;
+    border: 1px black solid;
+}
+
+#inject-question {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: auto;
+    padding: 175px 10px;
 }
 
 #inject-progress {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     position: absolute;
     top: 25px;
+    margin: 0 -5px;
 }
 
+#progress, #score {
+    margin: 0 25px;
+    color: white;
+}
+
+/* USE A MAX WIDTH / MAX HEIGHT PROP TO HELP WITH SIZING SCREENS */

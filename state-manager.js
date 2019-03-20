@@ -5,8 +5,8 @@ function renderFront() {
     STORE.progress.score = 0;
     STORE.progress.questionNum = 1;
     $('#inject-question').html(
-    `<h2>Welcome to the Google Cloud Platform Quiz!</h2>
-    <button type="button" id="start">Start</button>`);
+    `<div class="render-front"><h2>Welcome to the Google Cloud Platform Quiz!</h2>
+    <button type="button" class="button" id="start">Start</button></div>`);
 
     $('#start').on('click', function (event) {
         renderQuestionAndProgress();
@@ -26,23 +26,25 @@ function generateQuestion() {
             <form>
                 <fieldset>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[0]}" name="answer" required>
+                        <input type="radio" value="${answerOrder[0]}" name="answer" class="answer" required>
                         <span>${answer1}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[1]}" name="answer" required>
+                        <input type="radio" value="${answerOrder[1]}" name="answer" class="answer" required>
                         <span>${answer2}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[2]}" name="answer" required>
+                        <input type="radio" value="${answerOrder[2]}" name="answer" class="answer" required>
                         <span>${answer3}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[3]}" name="answer" required>
+                        <input type="radio" value="${answerOrder[3]}" name="answer" class="answer" required>
                         <span>${answer4}</span>
                     </label>
                 </fieldset>
-                    <button type="submit" id="submit-button">Submit</button>
+                    <div class="button-holder">
+                    <button type="submit" class="button" id="submit-button">Submit</button>
+                    </div>
             </form>`
 }
 
@@ -89,7 +91,7 @@ function renderResponseCorrect() {
     console.log(`${'renderResponseCorrect'} ran`);
     STORE.progress.score++;
     renderProgress();
-    $('#inject-question').html(`<h2>You got it!</h2><button type="button" id="next">Next</button>`);
+    $('#inject-question').html(`<h2>You got it!</h2><div class="button-holder"><button type="button" class="button" id="next">Next</button></div>`);
     $('#next').on('click', function (event) {
         renderNextQuestion();
     });
@@ -102,7 +104,7 @@ function renderResponseIncorrect() {
     $('#inject-question').html(
         `<h2>Aww, not quite. The correct answer was: 
         ${STORE.QA[STORE.progress.questionNum].answers[correctAnswerIndex]}</h2>
-        <button type="button" id="next">Next</button>`);
+        <div class="button-holder"><button type="button" class="button" id="next">Next</button></div>`);
     $('#next').on('click', function (event) {
         renderNextQuestion();
     });
@@ -121,7 +123,7 @@ function renderEnd() {
     console.log(`${'renderEnd'} ran`);
     $('#inject-question').html(
     `<h2>That's it! You're done with the quiz. You got ${STORE.progress.score} out of ${STORE.QA.length} questions right.</h2>
-    <button type="button" id="restart">Try Again</button>`);
+    <button type="button" class="button" id="restart">Try Again</button>`);
     $('#inject-progress').html('');
     $('#restart').on('click', function (event) {
         renderFront();
