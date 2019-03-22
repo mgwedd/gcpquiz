@@ -11,21 +11,20 @@ const STORE = {
     QA: [
         {
             question: 'What is Google Cloud Platform (GCP)?',
-            answers: ['A collection of products that includes Youtube, Gmail and Search, which Google offers to customers on a freemium basis, with the overarching purpose of organizing the world’s information.',
-                      'A service that Google offers to enterprises for developing, launching, and deploying their own managed web applications.', 
-                      'The world’s number one cloud computing platform', 
-                      'A suite of enterprise cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products.'],
+            answers: ['A suite that includes Youtube, Gmail and Google Search.',
+                      'A Gooogle service for deploying managed web applications.', 
+                      'The world’s number one cloud computing platform.', 
+                      'A suite of enterprise cloud computing services that runs on Google\'s.'],
             correct: 3
         }, 
         {
             question: 'What Is GCP’s Compute Engine Useful for?',
             answers: ['Applying a lockstep columnar traversal algorithm to massive datasets',
-                      'Ingesting and processing streaming data from Internet of Things devices', 
-                      'Managing noSQL datastores', 'Launching, provisioning and decommissioning virtual machines (VMs) on demand'],
+                      'Ingesting and processing streaming data from IoT devices', 
+                      'Managing noSQL datastores', 'On-demand virtual machines (VMs) on demand'],
             correct: 3
         },
-        {
-            question: 'On which Apache programming model is Dataflow based?',
+        {  question: 'On which Apache programming model is Dataflow based?',
             answers: ['Hive.',
                       'Kafka.', 
                       'Pig.', 
@@ -34,18 +33,18 @@ const STORE = {
         }, 
         {
             question: 'Which are adjusted on each epoch in a machine learning training session?',
-            answers: ['features and hyperparameters',
-                      'learning rate and number of hidden layers', 
-                      'weights and features', 
-                      'weights and biases'],
+            answers: ['features and hyperparameters.',
+                      'learning rate and number of hidden layers.', 
+                      'weights and features.', 
+                      'weights and biases.'],
             correct: 3
         },
         {
             question: 'What’s an accurate distinction between Big Query and Big Table?',
-            answers: ['Big Table is a globally distributed key-value store while Big Query is the service for querying that store',
-                      'Big Query is the service underneath Google Search; Big Table is the technology underneath Google Sheets', 
-                      'Big Table focuses on low-latency nonrelational data access while Big Query is best at rapidly scanning massive datasets', 
-                      'Big Query is a managed, cloud-native Hadoop implementation; Big Table is for processing streaming data'],
+            answers: ['Bigtable is a distributed key-value store; BigQuery queries that store.',
+                      'BigQuery is underneath Google Search; bigtable is underneath Google Sheets.', 
+                      'Bigtable is for OLTP; BigQuery is best for OLAP.', 
+                      'BigQuery is managed MapReduce; Bigtable is managed MySQL.'],
             correct: 2
         }, 
         {
@@ -58,17 +57,17 @@ const STORE = {
         },
         {
             question: 'What’s Google Cloud Storage?',
-            answers: ['A blob/object store for unstructured data for custom analytics pipelines, streaming multimedia, and/or archives/backups.',
+            answers: ['A blob/object store for all data types and formats, focusing on unstructured data.',
                       'A space for storing game state, user profiles, or product catalogues.', 
-                      'A mission-critical, relational database service with transactional consistency, global scale, and high availability.', 
+                      'A highly-available, global and low-latency relational database.', 
                       'A collaborative space for storing, sharing and editing files.'],
             correct: 0
         },
         {
-            question: 'Which of These Is a Good Use Case for GCP’s Cloud SQL?',
-            answers: ['Running an analytics job on structured relational data, where horizontal scalability isn’t a big concern.',
-                      'Dealing with  unstructured data when you don’t need mobile SDKs.', 
-                      'Running an analytics workload on structured data that isn’t relational, when you don’t need any Mobile SDKs', 
+            question: 'Which of these is a good use case for Cloud SQL?',
+            answers: ['Managing relational data when horizontal scalability is unneeded.',
+                      'Dealing with unstructured data when you don’t need mobile SDKs.', 
+                      'Doing analytics on structured, non-relational data, when you don’t need any Mobile SDKs.', 
                       'Migrating existing Hadoop/Spark workloads to the GCP ecosystem.'],
             correct: 0
         }, 
