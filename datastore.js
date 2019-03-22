@@ -72,7 +72,7 @@ const STORE = {
             correct: 0
         }, 
         {
-            question: 'Which service should you use to order, process pass along messages being ingested with Pub/Sub?',
+            question: 'Which service should you use to order, process and pass along ingested messages?',
             answers: ['Dataproc.',
                       'Bigtable.', 
                       'Dataflow.', 
@@ -80,11 +80,11 @@ const STORE = {
             correct: 2
         },
         {
-            question: 'You have a pre-existing Hadoop cluster that you use to run on-prem jobs, and you want to migrate to a managed service with less ops and admin. What should you do?',
-            answers: ['Use a transfer appliance to get the data into BigQuery.',
-                      'Bigtable is the answer. Use Transfer Service to get it in and then deal with it there.', 
+            question: 'How should you migrate your existing Hadoop workloads to a managed service?',
+            answers: ['Use a Transfer Appliance to get the data into BigQuery.',
+                      'Bigtable is the answer. Use Transfer Service and then deal with it there.', 
                       'Build a ML model in ML Engine to predict the correct course of action.', 
-                      'This is a good use case for Dataproc.'],
+                      'Use Dataproc.'],
             correct: 3
         }
     ]
