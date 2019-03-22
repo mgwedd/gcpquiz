@@ -5,8 +5,8 @@ function renderFront() {
     STORE.progress.score = 0;
     STORE.progress.questionNum = 1;
     $('#inject-question').html(
-    `<div class="render-front"><h2>Welcome to the Google Cloud Platform Quiz!</h2>
-    <button type="button" class="button" id="start">Start</button></div>`);
+    `<h2>Welcome to the Google Cloud Platform Quiz!</h2>
+    <button type="button" class="button" id="start">Start</button>`);
 
     $('#start').on('click', function (event) {
         renderQuestionAndProgress();
@@ -42,10 +42,8 @@ function generateQuestion() {
                         <span>${answer4}</span>
                     </label>
                 </fieldset>
-                    <div class="button-holder">
-                    <button type="submit" class="button" id="submit-button">Submit</button>
-                    </div>
-            </form>`
+            </form>
+            <button type="submit" class="button" id="submit-button">Submit</button>`
 }
 
 function getRandomAnswerOrder() {
@@ -75,7 +73,7 @@ function renderProgress() {
 
 function awaitAndValidateResponse(){
     console.log(`${'awaitAndValidateResponse'} ran`);
-    $('form').on('submit', function (event) {
+    $('#submit-button').on('click', function (event) {
         event.preventDefault();
         const answerChoice = $('input[name="answer"]:checked').val();
         if (answerChoice == STORE.QA[STORE.progress.questionNum].correct) {

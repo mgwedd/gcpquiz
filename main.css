@@ -1,21 +1,27 @@
-*, *:before, *:after {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
 body { 
-    min-height: 100vh;   
+    min-height: 100%;   
     background-image: url("cloud-background.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
 }
 
 h2 {
     text-align: center;
-    font: bold 30px;
+    font-size: 18px;
     color: white;
+    padding: 8px;
+    background: rgba(0,0,0,0.4)
 }
 
 fieldset {
@@ -27,19 +33,12 @@ label {
     display: flex;
 }
 
-.render-front {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 175px 10px;
-    color: white;
+header {
+    height: 30px;
+    padding: 30px;
 }
 
 /* styles for all button instances */
-/* .button-holder {
-    
-} */
 .button {
     background-color: white; 
     border: 2px solid black;
@@ -51,17 +50,21 @@ label {
     font-size: 16px;
     font-weight: 800;
     text-transform: uppercase;
+    width: 145px;
   }
 
 .button:hover {
     background-color: #D2DEFE; 
+    scale: 1.03;
 }
+
 /* .answer styles each individual form radio input field */
 .answer {
     background-color: white;
     color: black;
     margin: 10px;
     border: 1px black solid;
+    /* How can I min/max width these? */
 }
 
 #inject-question {
@@ -69,9 +72,7 @@ label {
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
-    margin-top: auto;
-    padding: 175px 10px;
+    height: 500px;
 }
 
 #inject-progress {
@@ -79,14 +80,11 @@ label {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
-    top: 25px;
     margin: 0 -5px;
+    background: rgba(0,0,0,0.4)
 }
 
 #progress, #score {
     margin: 0 25px;
     color: white;
 }
-
-/* USE A MAX WIDTH / MAX HEIGHT PROP TO HELP WITH SIZING SCREENS */
