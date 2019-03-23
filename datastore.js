@@ -19,16 +19,16 @@ const STORE = {
         }, 
         {
             question: 'What Is GCP’s Compute Engine Useful for?',
-            answers: ['Applying a lockstep columnar traversal algorithm to massive datasets',
-                      'Ingesting and processing streaming data from IoT devices', 
-                      'Managing noSQL datastores', 'On-demand virtual machines (VMs) on demand'],
+            answers: ['Applying a lockstep columnar traversal algorithm to massive datasets.',
+                      'Ingesting and processing streaming data from IoT devices.', 
+                      'Managing noSQL datastores.', 'On-demand virtual machines (VMs).'],
             correct: 3
         },
         {  question: 'On which Apache programming model is Dataflow based?',
-            answers: ['Hive.',
-                      'Kafka.', 
-                      'Pig.', 
-                      'Beam.'],
+            answers: ['Apache Hive.',
+                      'Apache Kafka.', 
+                      'Apache Pig.', 
+                      'Apache Beam.'],
             correct: 3
         }, 
         {
@@ -40,9 +40,9 @@ const STORE = {
             correct: 3
         },
         {
-            question: 'What’s an accurate distinction between Big Query and Big Table?',
+            question: 'What’s an accurate distinction between BigQuery and Bigtable?',
             answers: ['Bigtable is a distributed key-value store; BigQuery queries that store.',
-                      'BigQuery is underneath Google Search; bigtable is underneath Google Sheets.', 
+                      'BigQuery is underneath Google Search; Bigtable is underneath Google Sheets.', 
                       'Bigtable is for OLTP; BigQuery is best for OLAP.', 
                       'BigQuery is managed MapReduce; Bigtable is managed MySQL.'],
             correct: 2
