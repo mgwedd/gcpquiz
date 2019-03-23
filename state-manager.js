@@ -1,6 +1,4 @@
 function renderFront() {
-    console.log(`${'renderFront'} ran`);
-    // renders home screen and allows user to start the quiz
     // In case this is a quiz restart, reset the question number and score.
     STORE.progress.score = 0;
     STORE.progress.questionNum = 1;
@@ -14,7 +12,6 @@ function renderFront() {
 }
 
 function generateQuestion() {
-    console.log(`${'generateQuestion'} ran`);
     const questionIndex = STORE.progress.questionNum;
     const answerOrder = getRandomAnswerOrder();
     const question = STORE.QA[questionIndex].question;
@@ -26,29 +23,27 @@ function generateQuestion() {
             <form>
                 <fieldset>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[0]}" name="answer" class="answer" required>
+                        <input type="radio" value="${answerOrder[0]}" name="answer" class="answer">
                         <span>${answer1}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[1]}" name="answer" class="answer" required>
+                        <input type="radio" value="${answerOrder[1]}" name="answer" class="answer">
                         <span>${answer2}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[2]}" name="answer" class="answer" required>
+                        <input type="radio" value="${answerOrder[2]}" name="answer" class="answer">
                         <span>${answer3}</span>
                     </label>
                     <label class="answer">
-                        <input type="radio" value="${answerOrder[3]}" name="answer" class="answer" required>
+                        <input type="radio" value="${answerOrder[3]}" name="answer" class="answer">
                         <span>${answer4}</span>
                     </label>
                 </fieldset>
             </form>
-            <button type="submit" class="button" id="submit-button">Submit</button>`
+            <button type="submit" id="submit-button" class="button">Submit</button>`
 }
 
 function getRandomAnswerOrder() {
-    //  Let's do the Fisher-Yates shuffle! 
-    console.log(`${'getRandomAnswerOrder'} ran`);
     const randomAnswerOrder = [0,1,2,3];
     for (let i = randomAnswerOrder.length - 1; i > 0; i--) {
         let n = Math.floor(Math.random() * (i + 1)); 
@@ -58,7 +53,6 @@ function getRandomAnswerOrder() {
 }
 
 function renderQuestionAndProgress() {
-    console.log(`${'renderQuestionAndProgress'} ran`);
     $('#inject-question').html(generateQuestion());
     renderProgress();
     awaitAndValidateResponse();
@@ -72,21 +66,33 @@ function renderProgress() {
 }
 
 function awaitAndValidateResponse(){
-    console.log(`${'awaitAndValidateResponse'} ran`);
+    
     $('#submit-button').on('click', function (event) {
-        event.preventDefault();
-        const answerChoice = $('input[name="answer"]:checked').val();
-        if (answerChoice == STORE.QA[STORE.progress.questionNum].correct) {
-            renderResponseCorrect();
+        event.preventDefault();  
+        if (!isAnswerChosen()) {
+            alert('Choose your answer.');
         } else {
-            renderResponseIncorrect();
+            const answerChoice = $('input[name="answer"]:checked').val();
+            if (answerChoice == STORE.QA[STORE.progress.questionNum].correct){
+                renderResponseCorrect();
+            } else {
+                renderResponseIncorrect();
+         }
         }
-    });
+     });
+}
+
+function isAnswerChosen() {
+    const inputs = document.getElementsByTagName('input');
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].checked) {
+        return true;
+      } 
+    }
+    return false;
 }
 
 function renderResponseCorrect() {
-    // render correct answer screen with data from validate.
-    console.log(`${'renderResponseCorrect'} ran`);
     STORE.progress.score++;
     renderProgress();
     $('#inject-question').html(`<h2>You got it!</h2><div class="button-holder"><button type="button" class="button" id="next">Next</button></div>`);
@@ -96,8 +102,6 @@ function renderResponseCorrect() {
 }
 
 function renderResponseIncorrect() {
-    // render correct answer screen with data from validate.
-    console.log(`${'renderResponseIncorrect'} ran`);
     const correctAnswerIndex = STORE.QA[STORE.progress.questionNum].correct;
     $('#inject-question').html(
         `<h2>Aww, not quite. The correct answer was: 
@@ -118,7 +122,6 @@ function renderNextQuestion() {
 }
 
 function renderEnd() {
-    console.log(`${'renderEnd'} ran`);
     $('#inject-question').html(
     `<h2>That's it! You're done with the quiz. You got ${STORE.progress.score} out of ${STORE.QA.length} questions right.</h2>
     <button type="button" class="button" id="restart">Try Again</button>`);
