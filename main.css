@@ -17,12 +17,19 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+header {
+    height: 30px;
+    padding: 30px;
+}
+
 h2 {
     text-align: center;
     font-size: 18px;
     color: white;
     padding: 8px;
     background: rgba(0,0,0,0.45);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
 }
 
 fieldset {
@@ -35,15 +42,23 @@ fieldset {
 label {
     display: flex;
     cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
 }
 
 input {
     text-align: left;
+    box-shadow: none;
 }
 
-header {
-    height: 30px;
-    padding: 30px;
+/* .answer styles each individual form radio input field */
+.answer {
+    background: rgba(255, 255, 255, 0.75);
+    color: black;
+    margin: 10px;
+    border: none;
+    text-align: left;
+    padding: 5px;
 }
 
 /* styles for all button instances */
@@ -59,18 +74,9 @@ header {
     font-weight: 800;
     text-transform: uppercase;
     width: 145px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
 }
-
-/* .answer styles each individual form radio input field */
-.answer {
-    background: rgba(255, 255, 255, 0.75);
-    color: black;
-    margin: 10px;
-    border: none;
-    text-align: left;
-    padding: 5px;
-}
-
 
 #inject-question {
     display: flex;
@@ -86,10 +92,13 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 0 -5px;
-    background: rgba(0,0,0,0.45)
+    background: rgba(0,0,0,0.45);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 6px;
 }
 
 #progress, #score {
     margin: 0 25px;
+    padding: 8px;
     color: white;
 }
