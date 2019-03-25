@@ -1,5 +1,4 @@
 function renderFront() {
-    // In case this is a quiz restart, reset the question number and score.
     STORE.progress.score = 0;
     STORE.progress.questionNum = 1;
     $('#inject-question').html(
